@@ -1,0 +1,23 @@
+{
+  "name": "duo_zakelijk",
+  "version": "1.0.0",
+  "description": "\"# duo_zakelijk\"",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adibkhaled/duo_zakelijk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adibkhaled/duo_zakelijk/issues"
+  },
+  "homepage": "https://github.com/adibkhaled/duo_zakelijk#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.4.0"
+  }
+}
