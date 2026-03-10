@@ -10,7 +10,10 @@
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "allure:generate": "allure generate allure-results -o allure-report --clean",
+    "allure:report": "npm run allure:generate && allure open allure-report",
+    "allure:clean": "rimraf allure-results allure-report .allure"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,9 @@
   "homepage": "https://github.com/adibkhaled/duo_zakelijk#readme",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.4.0"
+    "@types/node": "^25.4.0",
+    "allure-commandline": "^2.37.0",
+    "allure-playwright": "^3.6.0",
+    "rimraf": "^6.1.3"
   }
 }
