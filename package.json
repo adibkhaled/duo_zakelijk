@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "description": "\"# duo_zakelijk\"",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:edge": "playwright test --project=\"Microsoft Edge\"",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adibkhaled/duo_zakelijk.git"
