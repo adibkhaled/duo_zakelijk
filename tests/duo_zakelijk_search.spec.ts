@@ -65,18 +65,18 @@ test.describe('DUO Zakelijk - Search Tests', () => {
    * Test: Verify search result link visibility
    */
   test('TC-SEARCH-006: Verify kinderopvang search result link is visible', async () => {
-    await duoZakelijkPage.performSearch('kinderopvang');
+    await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
     
     // Wait and check if results are displayed
     const pageContent = await duoZakelijkPage.page.content();
-    expect(pageContent).toContain('kinderopvang');
+    expect(pageContent).toContain(SEARCH_DATA[0].expectedResultPartial.toLowerCase());
   });
 
   /**
    * Test: Verify multiple searches in sequence
    */
   test('TC-SEARCH-007: Perform multiple searches in sequence', async () => {
-    const searchTerms = ['kinderopvang', 'onderwijs', 'duo'];
+    const searchTerms = [SEARCH_DATA[0].searchTerm.toLowerCase(), SEARCH_DATA[1].searchTerm.toLowerCase(), SEARCH_DATA[2].searchTerm.toLowerCase()];
 
     for (const term of searchTerms) {
       await duoZakelijkPage.performSearch(term);
@@ -91,7 +91,7 @@ test.describe('DUO Zakelijk - Search Tests', () => {
    * Test: Verify search returns to home after search
    */
   test('TC-SEARCH-008: Search and return to home with success', async () => {
-    await duoZakelijkPage.performSearch('kinderopvang');
+    await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
     
     // Go back home
     await duoZakelijkPage.clickHomeButton();
