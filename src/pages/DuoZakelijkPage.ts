@@ -2,7 +2,7 @@ import { Page, expect } from '@playwright/test';
 
 export class DuoZakelijkPage {
   readonly page: Page;
-  private readonly baseUrl = 'https://duo.nl/zakelijk/';
+   private readonly pathZakelijk = 'zakelijk';
 
   constructor(page: Page) {
     this.page = page;
@@ -12,7 +12,7 @@ export class DuoZakelijkPage {
    * Navigeer naar DUO Zakelijk pagina
    */
   async navigateToDuo(): Promise<void> {
-    await this.page.goto(this.baseUrl);
+    await this.page.goto(this.pathZakelijk);
     await this.page.waitForLoadState('networkidle');
   }
 
