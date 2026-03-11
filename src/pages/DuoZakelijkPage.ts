@@ -9,7 +9,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Navigate to DUO Zakelijk page
+   * Navigeer naar DUO Zakelijk pagina
    */
   async navigateToDuo(): Promise<void> {
     await this.page.goto(this.baseUrl);
@@ -17,7 +17,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Click on a navigation link by name
+   * Klik op een navigatielink op naam
    */
   async clickNavigationLink(linkName: string): Promise<void> {
     await this.page.getByRole('link', { name: linkName }).click();
@@ -25,7 +25,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Click the home button to return to main page
+   * Klik op de startknop om terug te gaan naar de hoofdpagina
    */
   async clickHomeButton(): Promise<void> {
     await this.page.getByTitle('Home', { exact: true }).click();
@@ -33,7 +33,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Verify a link is visible on the page
+   * Controleer of een link zichtbaar is op de pagina
    */
   async verifyLinkIsVisible(linkName: string): Promise<void> {
     const link = this.page.getByRole('link', { name: linkName });
@@ -41,7 +41,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Verify a heading is visible on the page
+   * Controleer of een koptekst zichtbaar is op de pagina
    */
   async verifyHeadingIsVisible(headingName: string): Promise<void> {
     const heading = this.page.getByRole('heading', { name: headingName });
@@ -49,7 +49,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Verify search input field is visible
+   * Controleer of het zoekveld zichtbaar is
    */
   async verifySearchInputIsVisible(): Promise<void> {
     const searchInput = this.page.getByRole('textbox', { name: 'Zoek' });
@@ -57,7 +57,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Perform a search with the given term
+   * Voer een zoekopdracht uit met de gegeven term
    */
   async performSearch(searchTerm: string): Promise<void> {
     const searchInput = this.page.getByRole('textbox', { name: 'Zoek' });
@@ -71,19 +71,19 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Verify search result contains expected text
+   * Controleer of zoekresultaat verwachte tekst bevat
    */
   async verifySearchResultContains(expectedText: string): Promise<void> {
-    // Wait for search results to load
+    // Wacht tot zoekresultaten zijn geladen
     await this.page.waitForLoadState('networkidle');
     
-    // Check if page contains the expected text
+    // Controleer of pagina de verwachte tekst bevat
     const content = await this.page.content();
     expect(content).toContain(expectedText);
   }
 
   /**
-   * Verify search result link is visible
+   * Controleer of zoekresultaatlink zichtbaar is
    */
   async verifySearchResultLinkVisible(linkName: string): Promise<void> {
     const resultLink = this.page.getByRole('link', { name: linkName });
@@ -91,7 +91,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Get all links on the current page
+   * Haal alle links op de huidige pagina op
    */
   async getAllLinks(): Promise<string[]> {
     const links = await this.page.getByRole('link').all();
@@ -108,7 +108,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Verify link exists in page
+   * Controleer of link op pagina bestaat
    */
   async verifyLinkExists(linkName: string): Promise<boolean> {
     const links = await this.getAllLinks();
@@ -116,14 +116,14 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Get current page URL
+   * Haal huidige pagina-URL op
    */
   async getCurrentUrl(): Promise<string> {
     return this.page.url();
   }
 
   /**
-   * Navigate to a specific section and verify heading
+   * Navigeer naar een specifieke sectie en controleer de koptekst
    */
   async navigateToSectionAndVerify(
     linkName: string,
@@ -134,7 +134,7 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Search and verify result contains expected text
+   * Zoekopdracht uitvoeren en controleer of resultaat verwachte tekst bevat
    */
   async searchAndVerifyResult(
     searchTerm: string,
@@ -145,21 +145,21 @@ export class DuoZakelijkPage {
   }
 
   /**
-   * Get page title
+   * Haal paginatitel op
    */
   async getPageTitle(): Promise<string> {
     return this.page.title();
   }
 
   /**
-   * Wait for element to be visible
+   * Wacht tot element zichtbaar is
    */
   async waitForElement(selector: string, timeout: number = 5000): Promise<void> {
     await this.page.locator(selector).waitFor({ state: 'visible', timeout });
   }
 
   /**
-   * Verify page is loaded and contains main content
+   * Controleer of pagina is geladen en bevat hoofdinhoud
    */
   async verifyPageIsLoaded(): Promise<void> {
     const zakelijkLink = this.page.getByRole('link', { name: 'Zakelijk' });

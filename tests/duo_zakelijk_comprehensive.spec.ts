@@ -4,11 +4,11 @@ import { DUO_ZAKELIJK_LOCATORS_NL } from '../src/resource/locator/duoZakelijkLoc
 import { SEARCH_DATA } from '../src/resource/data/duoZakelijkTestData';
 
 /**
- * DUO Zakelijk - Comprehensive Tests
- * Complete test suite for DUO Zakelijk page including navigation and search
- * Refactored version of test-2.spec.ts using Page Object Model
+ * DUO Zakelijk - Uitgebreide Tests
+ * Complete testsuite voor DUO Zakelijk-pagina inclusief navigatie en zoeken
+ * Gereviseerde versie van test-2.spec.ts met Page Object Model
  */
-test.describe('DUO Zakelijk - Comprehensive Tests', () => {
+test.describe('DUO Zakelijk - Uitgebreide Tests', () => {
   let duoZakelijkPage: DuoZakelijkPage;
 
   test.beforeEach(async ({ page }) => {
@@ -17,33 +17,33 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
   });
 
   /**
-   * Test Suite 1: Page Load and Initial State
+   * Testsuite 1: Pagina laden en beginwaarde
    */
-  test.describe('Test Suite 1: Page Load and Initial State', () => {
-    test('TC-INITIAL-001: Page should load successfully', async () => {
+  test.describe('Testsuite 1: Pagina laden en beginwaarde', () => {
+    test('TC-INITIAL-001: Pagina moet succesvol laden', async () => {
       await duoZakelijkPage.verifyPageIsLoaded();
     });
 
-    test('TC-INITIAL-002: Search input should be visible on load', async () => {
+    test('TC-INITIAL-002: Zoekinvoerveld moet zichtbaar zijn bij laden', async () => {
       await duoZakelijkPage.verifySearchInputIsVisible();
     });
 
-    test('TC-INITIAL-003: Verify page URL is correct', async () => {
+    test('TC-INITIAL-003: Controleer dat pagina-URL correct is', async () => {
       const url = await duoZakelijkPage.getCurrentUrl();
       expect(url).toContain('duo.nl/zakelijk');
     });
   });
 
   /**
-   * Test Suite 2: Navigation - Kinderopvang
+   * Testsuite 2: Navigatie - Kinderopvang
    */
-  test.describe('Test Suite 2: Navigation - Kinderopvang', () => {
-    test('TC-KINDEROPVANG-001: Click Kinderopvang link and verify heading', async () => {
+  test.describe('Testsuite 2: Navigatie - Kinderopvang', () => {
+    test('TC-KINDEROPVANG-001: Klik Kinderopvang-link en controleer koptekst', async () => {
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_HEADING.name);
     });
 
-    test('TC-KINDEROPVANG-002: Return home after Kinderopvang navigation', async () => {
+    test('TC-KINDEROPVANG-002: Retourneer naar startpagina na Kinderopvang-navigatie', async () => {
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_HEADING.name);
       await duoZakelijkPage.clickHomeButton();
@@ -52,15 +52,15 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
   });
 
   /**
-   * Test Suite 3: Navigation - Primair onderwijs
+   * Testsuite 3: Navigatie - Primair onderwijs
    */
-  test.describe('Test Suite 3: Navigation - Primair onderwijs', () => {
-    test('TC-PRIMAIR-001: Click Primair onderwijs link and verify heading', async () => {
+  test.describe('Testsuite 3: Navigatie - Primair onderwijs', () => {
+    test('TC-PRIMAIR-001: Klik Primair onderwijs-link en controleer koptekst', async () => {
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_HEADING.name);
     });
 
-    test('TC-PRIMAIR-002: Return home after Primair onderwijs navigation', async () => {
+    test('TC-PRIMAIR-002: Retourneer naar startpagina na Primair onderwijs-navigatie', async () => {
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_HEADING.name);
       await duoZakelijkPage.clickHomeButton();
@@ -69,15 +69,15 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
   });
 
   /**
-   * Test Suite 4: Navigation - Voortgezet onderwijs
+   * Testsuite 4: Navigatie - Voortgezet onderwijs
    */
-  test.describe('Test Suite 4: Navigation - Voortgezet onderwijs', () => {
-    test('TC-VOORTGEZET-001: Click Voortgezet onderwijs link and verify heading', async () => {
+  test.describe('Testsuite 4: Navigatie - Voortgezet onderwijs', () => {
+    test('TC-VOORTGEZET-001: Klik Voortgezet onderwijs-link en controleer koptekst', async () => {
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.VOORTGEZET_ONDERWIJS_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.VOORTGEZET_ONDERWIJS_HEADING.name);
     });
 
-    test('TC-VOORTGEZET-002: Return home after Voortgezet onderwijs navigation', async () => {
+    test('TC-VOORTGEZET-002: Retourneer naar startpagina na Voortgezet onderwijs-navigatie', async () => {
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.VOORTGEZET_ONDERWIJS_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.VOORTGEZET_ONDERWIJS_HEADING.name);
       await duoZakelijkPage.clickHomeButton();
@@ -86,28 +86,28 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
   });
 
   /**
-   * Test Suite 5: Search Functionality
+   * Testsuite 5: Zoekfunctionaliteit
    */
-  test.describe('Test Suite 5: Search Functionality', () => {
-    test('TC-SEARCH-BASIC-001: Verify search input is visible', async () => {
+  test.describe('Testsuite 5: Zoekfunctionaliteit', () => {
+    test('TC-SEARCH-BASIC-001: Controleer of zoekinvoerveld zichtbaar is', async () => {
       await duoZakelijkPage.verifySearchInputIsVisible();
     });
 
-    test('TC-SEARCH-BASIC-002: Search for kinderopvang and verify results', async () => {
+    test('TC-SEARCH-BASIC-002: Zoek naar kinderopvang en controleer resultaten', async () => {
     //   await duoZakelijkPage.performSearch('kinderopvang');
     await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
       
-      // Verify search results are displayed
+      // Controleer of zoekresultaten worden weergegeven
       const content = await duoZakelijkPage.page.content();
       expect(content).toContain(SEARCH_DATA[0].expectedResultPartial.toLowerCase());
     });
 
-    test('TC-SEARCH-BASIC-003: Verify search results contain expected content', async () => {
+    test('TC-SEARCH-BASIC-003: Controleer of zoekresultaat verwachte inhoud bevat', async () => {
       await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
       await duoZakelijkPage.verifySearchResultContains(SEARCH_DATA[0].expectedResultPartial.toString());
     });
 
-    test('TC-SEARCH-BASIC-004: Return home from search results', async () => {
+    test('TC-SEARCH-BASIC-004: Retourneer naar startpagina vanuit zoekresultaten', async () => {
       await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
       await duoZakelijkPage.clickHomeButton();
       await duoZakelijkPage.verifyPageIsLoaded();
@@ -115,14 +115,14 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
   });
 
   /**
-   * Test Suite 6: Complete User Journey
+   * Testsuite 6: Complete gebruikerstraject
    */
-  test.describe('Test Suite 6: Complete User Journey', () => {
-    test('TC-JOURNEY-001: Complete user journey with navigation and search', async () => {
-      // Verify page loaded
+  test.describe('Testsuite 6: Complete gebruikerstraject', () => {
+    test('TC-JOURNEY-001: Complete gebruikerstraject met navigatie en zoeken', async () => {
+      // Controleer of pagina is geladen
       await duoZakelijkPage.verifyPageIsLoaded();
 
-      // Navigate to Kinderopvang
+      // Navigeer naar Kinderopvang
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_HEADING.name);
 
@@ -130,7 +130,7 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
       await duoZakelijkPage.clickHomeButton();
       await duoZakelijkPage.verifyPageIsLoaded();
 
-      // Navigate to Primair onderwijs
+      // Navigeer naar Primair onderwijs
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_HEADING.name);
 
@@ -138,7 +138,7 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
       await duoZakelijkPage.clickHomeButton();
       await duoZakelijkPage.verifyPageIsLoaded();
 
-      // Navigate to Voortgezet onderwijs
+      // Navigeer naar Voortgezet onderwijs
       await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.VOORTGEZET_ONDERWIJS_LINK.name);
       await duoZakelijkPage.verifyHeadingIsVisible(DUO_ZAKELIJK_LOCATORS_NL.VOORTGEZET_ONDERWIJS_HEADING.name);
 
@@ -146,13 +146,13 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
       await duoZakelijkPage.clickHomeButton();
       await duoZakelijkPage.verifyPageIsLoaded();
 
-      // Verify search functionality
+      // Controleer zoekfunctionaliteit
       await duoZakelijkPage.verifySearchInputIsVisible();
       await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
       await duoZakelijkPage.verifySearchResultContains(SEARCH_DATA[0].expectedResultPartial.toString());
     });
 
-    test('TC-JOURNEY-002: Navigation flow through all sections', async () => {
+    test('TC-JOURNEY-002: Navigatiestroom door alle secties', async () => {
       const sections = [
         { link: DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_LINK.name.toString(), heading: DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_HEADING.name.toString() },
         { link: DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_LINK.name.toString(), heading: DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_HEADING.name.toString() },
@@ -164,36 +164,36 @@ test.describe('DUO Zakelijk - Comprehensive Tests', () => {
         await duoZakelijkPage.clickHomeButton();
       }
 
-      // Verify final state
+      // Controleer eindsituatie
       await duoZakelijkPage.verifyPageIsLoaded();
     });
   });
 
   /**
-   * Test Suite 7: Link Verification
+   * Testsuite 7: Linkverificatie
    */
-  test.describe('Test Suite 7: Link Verification', () => {
-    test('TC-LINKS-001: Verify Zakelijk link is visible', async () => {
+  test.describe('Testsuite 7: Linkverificatie', () => {
+    test('TC-LINKS-001: Controleer of Zakelijk-link zichtbaar is', async () => {
       await duoZakelijkPage.verifyLinkIsVisible(DUO_ZAKELIJK_LOCATORS_NL.ZAKELIJK_LINK.name);
     });
 
-    test('TC-LINKS-002: Verify Kinderopvang link is visible', async () => {
+    test('TC-LINKS-002: Controleer of Kinderopvang-link zichtbaar is', async () => {
       await duoZakelijkPage.verifyLinkIsVisible(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_LINK.name);
     });
 
-    test('TC-LINKS-003: Verify Primair onderwijs link is visible', async () => {
+    test('TC-LINKS-003: Controleer of Primair onderwijs-link zichtbaar is', async () => {
       await duoZakelijkPage.verifyLinkIsVisible(DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_LINK.name);
     });
 
-    test('TC-LINKS-004: Verify Voortgezet onderwijs link is visible', async () => {
+    test('TC-LINKS-004: Controleer of Voortgezet onderwijs-link zichtbaar is', async () => {
       await duoZakelijkPage.verifyLinkIsVisible(DUO_ZAKELIJK_LOCATORS_NL.VOORTGEZET_ONDERWIJS_LINK.name);
     });
 
-    test('TC-LINKS-005: Get all links on page', async () => {
+    test('TC-LINKS-005: Haal alle links op pagina op', async () => {
       const links = await duoZakelijkPage.getAllLinks();
       expect(links.length).toBeGreaterThan(0);
       
-      // Verify expected links exist
+      // Controleer of verwachte links bestaan
       expect(links.some(link => link.includes(DUO_ZAKELIJK_LOCATORS_NL.ZAKELIJK_LINK.name))).toBeTruthy();
     });
   });

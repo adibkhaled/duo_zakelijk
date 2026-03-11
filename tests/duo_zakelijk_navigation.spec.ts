@@ -1,14 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { DuoZakelijkPage } from '../src/pages/DuoZakelijkPage';
 import { NAVIGATION_LINKS_DATA } from '../src/resource/data/duoZakelijkTestData';
-import { DUO_ZAKELIJK_LOCATORS } from '../src/resource/locator/duoZakelijkLocators.en';
 import { DUO_ZAKELIJK_LOCATORS_NL } from '../src/resource/locator/duoZakelijkLocators.nl';
 
 /**
- * Navigation Links Tests
- * Tests for all navigation links on DUO Zakelijk page
+ * Navigatielink Tests
+ * Tests voor alle navigatielinks op DUO Zakelijk-pagina
  */
-test.describe('DUO Zakelijk - Navigation Links Tests', () => {
+test.describe('DUO Zakelijk - Navigatielink Tests', () => {
   let duoZakelijkPage: DuoZakelijkPage;
 
   test.beforeEach(async ({ page }) => {
@@ -18,23 +17,23 @@ test.describe('DUO Zakelijk - Navigation Links Tests', () => {
   });
 
   /**
-   * Test 1: Verify all navigation links are visible on the page
+   * Test 1: Controleer of alle navigatielinks zichtbaar zijn op de pagina
    */
-  test('TC-NAV-001: Verify all navigation links are visible on the page', async () => {
+  test('TC-NAV-001: Controleer of alle navigatielinks zichtbaar zijn op de pagina', async () => {
     for (const linkData of NAVIGATION_LINKS_DATA) {
       await duoZakelijkPage.verifyLinkIsVisible(linkData.linkName);
     }
   });
 
   /**
-   * Test 2: Verify Zakelijk link is clickable and page updates
+   * Test 2: Controleer of Zakelijk-link klikbaar is en pagina wordt bijgewerkt
    */
-  test('TC-NAV-002: Verify Zakelijk link is clickable and visible', async () => {
-    await duoZakelijkPage.verifyLinkIsVisible(DUO_ZAKELIJK_LOCATORS.ZAKELIJK_LINK.name);
+  test('TC-NAV-002: Controleer of Zakelijk-link klikbaar is en zichtbaar', async () => {
+    await duoZakelijkPage.verifyLinkIsVisible(DUO_ZAKELIJK_LOCATORS_NL.ZAKELIJK_LINK.name);
   });
 
   /**
-   * Data-driven test: Navigate to each section and verify heading
+   * Gegevengestuurde test: Navigeer naar elk deel en controleer koptekst
    */
   NAVIGATION_LINKS_DATA.forEach((linkData) => {
     if (linkData.expectedHeading) {
@@ -45,7 +44,7 @@ test.describe('DUO Zakelijk - Navigation Links Tests', () => {
             linkData.expectedHeading
           );
           
-          // Verify we can go back home
+          // Controleer of we naar huis kunnen terugkeren
           await duoZakelijkPage.clickHomeButton();
           await duoZakelijkPage.verifyPageIsLoaded();
         }
@@ -54,9 +53,9 @@ test.describe('DUO Zakelijk - Navigation Links Tests', () => {
   });
 
   /**
-   * Test: Verify navigation flow - click through multiple links
+   * Test: Controleer navigatiestroom - klik door meerdere links
    */
-  test('TC-NAV-007: Verify navigation flow through multiple sections', async () => {
+  test('TC-NAV-007: Controleer navigatiestroom door meerdere secties', async () => {
     const sectionsToTest = [
       { link: DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_LINK.name.toString(), heading: DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_HEADING.name.toString() },
       { link: DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_LINK.name.toString(), heading: DUO_ZAKELIJK_LOCATORS_NL.PRIMAIR_ONDERWIJS_HEADING.name.toString() },
@@ -71,31 +70,31 @@ test.describe('DUO Zakelijk - Navigation Links Tests', () => {
   });
 
   /**
-   * Test: Verify page title
+   * Test: Controleer paginatitel
    */
-  test('TC-NAV-008: Verify page title contains expected text', async () => {
+  test('TC-NAV-008: Controleer of paginatitel verwachte tekst bevat', async () => {
     const title = await duoZakelijkPage.getPageTitle();
     expect(title.length).toBeGreaterThan(0);
   });
 
   /**
-   * Test: Verify home button returns to main page
+   * Test: Controleer of startknop terugkeert naar hoofdpagina
    */
-  test('TC-NAV-009: Verify home button functionality', async () => {
-    // Navigate to a section
-    await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS.KINDEROPVANG_LINK.name);
+  test('TC-NAV-009: Controleer startknop functionaliteit', async () => {
+    // Navigeer naar een sectie
+    await duoZakelijkPage.clickNavigationLink(DUO_ZAKELIJK_LOCATORS_NL.KINDEROPVANG_LINK.name);
     
-    // Click home to go back
+    // Klik Startpagina om terug te gaan
     await duoZakelijkPage.clickHomeButton();
     
-    // Verify we're back on main page
+    // Controleer of we terug zijn op de hoofdpagina
     await duoZakelijkPage.verifyPageIsLoaded();
   });
 
   /**
-   * Test: Verify all links are accessible via keyboard
+   * Test: Controleer of alle links toegankelijk zijn via toetsenbord
    */
-  test('TC-NAV-010: Verify links are accessible', async ({ page }) => {
+  test('TC-NAV-010: Controleer of links toegankelijk zijn', async ({ page }) => {
     const links = await duoZakelijkPage.getAllLinks();
     expect(links.length).toBeGreaterThan(0);
   });

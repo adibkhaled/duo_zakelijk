@@ -1,6 +1,6 @@
 /**
- * Test Data for DUO Zakelijk Page
- * Navigation Links to test
+ * Testgegevens voor DUO Zakelijk Pagina
+ * Navigatielinks om te testen
  */
 
 export const NAVIGATION_LINKS_DATA = [
@@ -9,73 +9,73 @@ export const NAVIGATION_LINKS_DATA = [
     name: 'Zakelijk',
     linkName: 'Zakelijk',
     expectedVisible: 'Zakelijk',
-    description: 'Navigate to Zakelijk section'
+    description: 'Navigeer naar Zakelijk-sectie'
   },
   {
     id: 2,
     name: 'Kinderopvang',
     linkName: 'Kinderopvang',
     expectedHeading: 'Kinderopvang',
-    description: 'Navigate to Kinderopvang section'
+    description: 'Navigeer naar Kinderopvang-sectie'
   },
   {
     id: 3,
     name: 'Primair onderwijs',
     linkName: 'Primair onderwijs',
     expectedHeading: 'Primair onderwijs',
-    description: 'Navigate to Primair onderwijs section'
+    description: 'Navigeer naar Primair onderwijs-sectie'
   },
   {
     id: 4,
     name: 'Voortgezet onderwijs',
     linkName: 'Voortgezet onderwijs',
     expectedHeading: 'Voortgezet onderwijs',
-    description: 'Navigate to Voortgezet onderwijs section'
+    description: 'Navigeer naar Voortgezet onderwijs-sectie'
   }
 ];
 
 /**
- * Test Data for Search Functionality
+ * Testgegevens voor Zoekfunctionaliteit
  */
 export const SEARCH_DATA = [
   {
     id: 1,
     searchTerm: 'kinderopvang',
     expectedResultPartial: 'Kinderopvang',
-    description: 'Search for Kinderopvang'
+    description: 'Zoek naar Kinderopvang'
   },
   {
     id: 2,
     searchTerm: 'onderwijs',
     expectedResultPartial: 'onderwijs',
-    description: 'Search for onderwijs'
+    description: 'Zoek naar onderwijs'
   },
   {
     id: 3,
     searchTerm: 'duo',
     expectedResultPartial: 'DUO',
-    description: 'Search for DUO'
+    description: 'Zoek naar DUO'
   }
 ];
 
 /**
- * External Links to verify on page
+ * Externe links om op pagina te verifiëren
  */
 export const EXTERNAL_LINKS_DATA = [
   {
     id: 1,
-    description: 'Zakelijk link should be visible'
+    description: 'Zakelijk-link moet zichtbaar zijn'
   },
   {
     id: 2,
-    description: 'Kinderopvang link should be visible'
+    description: 'Kinderopvang-link moet zichtbaar zijn'
   },
   {
     id: 3,
-    description: 'Primair onderwijs link should be visible'
+    description: 'Primair onderwijs-link moet zichtbaar zijn'
   },
   {
     id: 4,
-    description: 'Voortgezet onderwijs link should be visible'
+    description: 'Voortgezet onderwijs-link moet zichtbaar zijn'
   }
 ];

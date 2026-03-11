@@ -3,10 +3,10 @@ import { DuoZakelijkPage } from '../src/pages/DuoZakelijkPage';
 import { SEARCH_DATA } from '../src/resource/data/duoZakelijkTestData';
 
 /**
- * Search Functionality Tests
- * Tests for search feature on DUO Zakelijk page
+ * Zoekfunctionaliteit Tests
+ * Tests voor zoekfunctie op DUO Zakelijk-pagina
  */
-test.describe('DUO Zakelijk - Search Tests', () => {
+test.describe('DUO Zakelijk - Zoeken Tests', () => {
   let duoZakelijkPage: DuoZakelijkPage;
 
   test.beforeEach(async ({ page }) => {
@@ -16,14 +16,14 @@ test.describe('DUO Zakelijk - Search Tests', () => {
   });
 
   /**
-   * Test 1: Verify search input field is visible on page
+   * Test 1: Controleer of zoekinvoerveld zichtbaar is op pagina
    */
-  test('TC-SEARCH-001: Verify search input field is visible', async () => {
+  test('TC-SEARCH-001: Controleer of zoekinvoerveld zichtbaar is', async () => {
     await duoZakelijkPage.verifySearchInputIsVisible();
   });
 
   /**
-   * Data-driven test: Perform searches with different terms
+   * Gegevengestuurde test: Voer zoekopdrachten uit met verschillende termen
    */
   SEARCH_DATA.forEach((searchData) => {
     test(
@@ -31,7 +31,7 @@ test.describe('DUO Zakelijk - Search Tests', () => {
       async () => {
         await duoZakelijkPage.performSearch(searchData.searchTerm);
         
-        // Verify search results contain expected content
+        // Controleer of zoekresultaten verwachte inhoud bevatten
         await duoZakelijkPage.verifySearchResultContains(
           searchData.expectedResultPartial
         );
@@ -40,93 +40,93 @@ test.describe('DUO Zakelijk - Search Tests', () => {
   });
 
   /**
-   * Test: Verify search function with special characters
+   * Test: Controleer zoekfunctie met speciale tekens
    */
-  test('TC-SEARCH-004: Search with special search term', async () => {
+  test('TC-SEARCH-004: Zoek met speciale zoekterm', async () => {
     await duoZakelijkPage.performSearch('test');
     
-    // Wait for results to appear
+    // Wacht tot resultaten verschijnen
     const pageContent = await duoZakelijkPage.page.content();
     expect(pageContent).toBeTruthy();
   });
 
   /**
-   * Test: Verify search with empty input
+   * Test: Controleer zoeken met lege invoer
    */
-  test('TC-SEARCH-005: Search with minimal term', async () => {
+  test('TC-SEARCH-005: Zoek met minimale term', async () => {
     await duoZakelijkPage.performSearch('a');
     
-    // Page should load without errors
+    // Pagina moet zonder fouten laden
     const url = await duoZakelijkPage.getCurrentUrl();
     expect(url).toContain('duo.nl');
   });
 
   /**
-   * Test: Verify search result link visibility
+   * Test: Controleer zoekresulaatlink zichtbaarheid
    */
-  test('TC-SEARCH-006: Verify kinderopvang search result link is visible', async () => {
+  test('TC-SEARCH-006: Controleer of kinderopvang zoekresultaatlink zichtbaar is', async () => {
     await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
     
-    // Wait and check if results are displayed
+    // Wacht en controleer of resultaten worden weergegeven
     const pageContent = await duoZakelijkPage.page.content();
     expect(pageContent).toContain(SEARCH_DATA[0].expectedResultPartial.toLowerCase());
   });
 
   /**
-   * Test: Verify multiple searches in sequence
+   * Test: Controleer meervoudige zoekopdrachten achtereenvolgens
    */
-  test('TC-SEARCH-007: Perform multiple searches in sequence', async () => {
+  test('TC-SEARCH-007: Voer meervoudige zoekopdrachten achtereenvolgens uit', async () => {
     const searchTerms = [SEARCH_DATA[0].searchTerm.toLowerCase(), SEARCH_DATA[1].searchTerm.toLowerCase(), SEARCH_DATA[2].searchTerm.toLowerCase()];
 
     for (const term of searchTerms) {
       await duoZakelijkPage.performSearch(term);
       
-      // Go back home before next search
+      // Ga terug naar startpagina voordat volgende zoekopdracht
       await duoZakelijkPage.clickHomeButton();
       await duoZakelijkPage.verifyPageIsLoaded();
     }
   });
 
   /**
-   * Test: Verify search returns to home after search
+   * Test: Controleer zoeken retourneert naar startpagina na zoekopdracht
    */
-  test('TC-SEARCH-008: Search and return to home with success', async () => {
+  test('TC-SEARCH-008: Zoek en keer terug naar startpagina met succes', async () => {
     await duoZakelijkPage.performSearch(SEARCH_DATA[0].searchTerm.toLowerCase());
     
-    // Go back home
+    // Ga terug naar startpagina
     await duoZakelijkPage.clickHomeButton();
     
-    // Verify we're back on the main page
+    // Controleer of we terug op de hoofdpagina zijn
     await duoZakelijkPage.verifyPageIsLoaded();
   });
 
   /**
-   * Test: Verify search input can be cleared and refilled
+   * Test: Controleer zoekinvoerveld kan worden gewist en opnieuw ingevuld
    */
-  test('TC-SEARCH-009: Verify search input behavior', async ({ page }) => {
+  test('TC-SEARCH-009: Controleer zoekinvoerveld gedrag', async ({ page }) => {
     const searchInput = page.getByRole('textbox', { name: 'Zoek' });
     
-    // Click on search input
+    // Klik op zoekinvoerveld
     await searchInput.click();
     
-    // Fill with text
-    await searchInput.fill('test search');
+    // Vul met tekst
+    await searchInput.fill('test zoeken');
     
-    // Get the value
+    // Haal de waarde op
     const value = await searchInput.inputValue();
-    expect(value).toBe('test search');
+    expect(value).toBe('test zoeken');
   });
 
   /**
-   * Test: Verify search button exists and is clickable
+   * Test: Controleer zoekknop bestaat en is klikbaar
    */
-  test('TC-SEARCH-010: Verify search button is visible and accessible', async ({ page }) => {
+  test('TC-SEARCH-010: Controleer zoekknop is zichtbaar en toegankelijk', async ({ page }) => {
     const searchButton = page.getByRole('button', { name: 'Zoek' });
     
-    // Verify button is visible
+    // Controleer of knop zichtbaar is
     await expect(searchButton).toBeVisible();
     
-    // Verify button is enabled
+    // Controleer of knop is ingeschakeld
     await expect(searchButton).toBeEnabled();
   });
 });
