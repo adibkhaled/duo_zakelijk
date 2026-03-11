@@ -7,7 +7,6 @@
 src/
 ├── resource/
 │   ├── locator/
-│   │   ├── duoZakelijkLocators.en.ts    (English locators)
 │   │   └── duoZakelijkLocators.nl.ts    (Dutch locators)
 │   └── data/
 │       └── duoZakelijkTestData.ts       (Test data: links, search terms)
