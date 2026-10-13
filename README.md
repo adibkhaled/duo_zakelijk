@@ -1,4 +1,4 @@
-# Quick Start Guide - DUO Zakelijk Playwright Tests
+# Quick Start Guide (Playwrite)
 
 ## What Was Created
 
